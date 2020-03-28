@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/TupchienkoOS/movieWatchList.git/static/css/main.e22537c0.chunk.css",
+    "main.js": "/TupchienkoOS/movieWatchList.git/static/js/main.e4291a71.chunk.js",
+    "main.js.map": "/TupchienkoOS/movieWatchList.git/static/js/main.e4291a71.chunk.js.map",
+    "runtime-main.js": "/TupchienkoOS/movieWatchList.git/static/js/runtime-main.84b9b717.js",
+    "runtime-main.js.map": "/TupchienkoOS/movieWatchList.git/static/js/runtime-main.84b9b717.js.map",
+    "static/css/2.29ed0a76.chunk.css": "/TupchienkoOS/movieWatchList.git/static/css/2.29ed0a76.chunk.css",
+    "static/js/2.c77acc83.chunk.js": "/TupchienkoOS/movieWatchList.git/static/js/2.c77acc83.chunk.js",
+    "static/js/2.c77acc83.chunk.js.map": "/TupchienkoOS/movieWatchList.git/static/js/2.c77acc83.chunk.js.map",
+    "index.html": "/TupchienkoOS/movieWatchList.git/index.html",
+    "precache-manifest.e199229ee12f15f1e10a285d87f9b128.js": "/TupchienkoOS/movieWatchList.git/precache-manifest.e199229ee12f15f1e10a285d87f9b128.js",
+    "service-worker.js": "/TupchienkoOS/movieWatchList.git/service-worker.js",
+    "static/css/2.29ed0a76.chunk.css.map": "/TupchienkoOS/movieWatchList.git/static/css/2.29ed0a76.chunk.css.map",
+    "static/css/main.e22537c0.chunk.css.map": "/TupchienkoOS/movieWatchList.git/static/css/main.e22537c0.chunk.css.map",
+    "static/js/2.c77acc83.chunk.js.LICENSE.txt": "/TupchienkoOS/movieWatchList.git/static/js/2.c77acc83.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/TupchienkoOS/movieWatchList.git/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.84b9b717.js",
+    "static/css/2.29ed0a76.chunk.css",
+    "static/js/2.c77acc83.chunk.js",
+    "static/css/main.e22537c0.chunk.css",
+    "static/js/main.e4291a71.chunk.js"
+  ]
+}
