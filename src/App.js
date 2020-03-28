@@ -101,7 +101,7 @@ class Movie extends React.Component {
         <div className="row">
           <div className="col-6 m-2 " >
             <Button onClick={() => { this.setState({ currentPage: this.state.currentPage - 1 }) }} type="button" icon={{ name: 'left arrow' }} size='mini' disabled={this.state.currentPage === 1 ? true : false} />
-            <Button onClick={() => { this.setState({ currentPage: this.state.currentPage === this.state.totalPage ? this.state.totalPage - 1 : this.state.currentPage }) }} size='mini' content={this.state.currentPage === this.state.totalPage ? this.state.totalPage - 1 : this.state.currentPage} disabled={this.state.currentPage=this.totalPage? false : true} />           ...
+            <Button onClick={() => { this.setState({ currentPage: this.state.currentPage === this.state.totalPage ? this.state.totalPage - 1 : this.state.currentPage }) }} size='mini' content={this.state.currentPage === this.state.totalPage ? this.state.totalPage - 1 : this.state.currentPage} disabled={this.state.currentPage=this.state.totalPage? false : true} />           ...
             <Button onClick={() => { this.setState({ currentPage: this.state.totalPage }) }} content={this.state.totalPage} size='mini' />
             <Button onClick={() => { this.setState({ currentPage: this.state.currentPage + 1 }) }} type="button" size='mini' disabled={this.state.currentPage === this.state.totalPage ? true : false} icon={{ name: 'right arrow' }} />
           </div>
