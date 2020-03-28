@@ -27,6 +27,11 @@
 .App-link {
   color: #61dafb;
 }
+.App-Sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -36,3 +41,4 @@
     transform: rotate(360deg);
   }
 }
+

@@ -1,0 +1,1 @@
+ export const API = {apiKey:"65def5031ead88cf28fd3a6ae91d9aef", apiUrl:"https://api.themoviedb.org/3"}
