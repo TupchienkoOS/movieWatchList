@@ -89,7 +89,7 @@ class Movie extends React.Component {
           </div>
           <div className="col-3 " >
             <div className="App-Sticky">
-              <h3>Will Watch1: {this.state.watchList.length}</h3>
+              <h3>Will Watch12: {this.state.watchList.length}</h3>
               {this.state.watchList.map((movie, index) => {
                 return (
                   <div key={movie.id}>
