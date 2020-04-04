@@ -2,12 +2,11 @@ import React from 'react';
 import './App.css';
 import { moviesData } from './utils/MoviesData.js'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import MovieItem from './components/moviItem/MovieItem.js';
-import MovieListItem from './components/MovieListItem.js'
+import MovieItem from './components/MoviItem/MovieItem.js';
+import WillWatchList from './components/WatchList.js'
 import { API } from './utils/Api.js'
 import DropdownSortBtn from './components/DropdownSortBtn.js';
 import PaginationTabs from './components/PaginationTabs.js';
-import PaginationTabs1 from './components/paginationTab/PaginationTabs1.js';
 import SearchComponent from './components/SearchComponent.js'
 
 class Movie extends React.Component {
@@ -17,7 +16,7 @@ class Movie extends React.Component {
     this.state = ({
       show: false, like: false, moviesData: [],
       watchList: [], sortMovies: "popularity.desc",
-      isFetched: true, currentPage: 1, totalPage: 0
+      isFetched: true, currentPage: 1, totalPages: 0
     })
   }
 
@@ -46,7 +45,7 @@ class Movie extends React.Component {
     this.setState({ isFetched: false })
     fetch(`${API.apiUrl}/discover/movie?api_key=${API.apiKey}&sort_by=${this.state.sortMovies}&page=${this.state.currentPage}`)
       .then(response => { return response.json() })
-      .then(data => { console.log(data); this.setState({ moviesData: data.results, isFetched: true, totalPage: data.total_pages }) })
+      .then(data => { console.log(data); this.setState({ moviesData: data.results, isFetched: true, totalPages: data.total_pages }) })
   }
 
   componentDidMount() {
@@ -89,37 +88,22 @@ class Movie extends React.Component {
               {this.state.moviesData.map((movie) => {
                 return (
                   <div className="col-4 mb-2 mt-2" key={movie.id}>
-                    <MovieItem key={movie.id} movies={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} state={this.state} />
+                    <MovieItem key={movie.id} movie={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} state={this.state} />
                   </div>
-                )
-              })}
+                )})}
             </div>
           </div>
           <div className="col-3 " >
             <div className="App-Sticky">
-              <h3>Will Watch: {this.state.watchList.length}</h3>
-              {this.state.watchList.map((movie, index) => {
-                return (
-                  <div key={movie.id}>
-                    <ul className="list-group" >
-                      <MovieListItem movie={movie} key={movie.id} index={index} />
-                    </ul>
-                  </div>
-                )
-              })}
+             <WillWatchList watchList={this.state.watchList}/>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-6 m-2 " >
-            <PaginationTabs currentPage={this.state.currentPage} totalPage={this.state.totalPage} onChangeCurrentPage={this.onChangeCurrentPage} />
+            <PaginationTabs currentPage={this.state.currentPage} totalPages={this.state.totalPages} onChangeCurrentPage={this.onChangeCurrentPage} />
           </div>
-        </div>
-        <div className="row">
-          <div className="col-6 m-2 " >
-            <PaginationTabs1 currentPage={this.state.currentPage} totalPage={this.state.totalPage} onChangeCurrentPage={this.onChangeCurrentPage} />
-          </div>
-        </div>
+        </div>        
       </div>
     )
   }
