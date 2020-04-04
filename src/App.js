@@ -88,7 +88,7 @@ class Movie extends React.Component {
               {this.state.moviesData.map((movie) => {
                 return (
                   <div className="col-4 mb-2 mt-2" key={movie.id}>
-                    <MovieItem key={movie.id} movie={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} state={this.state} />
+                    <MovieItem key={movie.id} movie={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} watchList={this.state.watchList} />
                   </div>
                 )})}
             </div>
