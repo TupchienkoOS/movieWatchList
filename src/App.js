@@ -15,7 +15,7 @@ class Movie extends React.Component {
     super();
     this.state = ({
       show: false, like: false, moviesData: [],
-      watchList: [], sortMovies: "popularity.desc",
+      willWatchList: [], sortMovies: "popularity.desc",
       isFetched: true, currentPage: 1, totalPages: 0
     })
   }
@@ -34,11 +34,11 @@ class Movie extends React.Component {
   }
 
   addToWatchList = movie => {
-    this.setState({ watchList: [...this.state.watchList, movie] })
+    this.setState({ willWatchList: [...this.state.willWatchList, movie] })
   }
 
   deleteFromWatchList = movie => {
-    this.setState({ watchList: this.state.watchList.filter(function (item) { return item.id !== movie.id }) })
+    this.setState({ willWatchList: this.state.willWatchList.filter(function (item) { return item.id !== movie.id }) })
   }
 
   fetchData() {
@@ -88,14 +88,14 @@ class Movie extends React.Component {
               {this.state.moviesData.map((movie) => {
                 return (
                   <div className="col-4 mb-2 mt-2" key={movie.id}>
-                    <MovieItem key={movie.id} movie={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} watchList={this.state.watchList} />
+                    <MovieItem key={movie.id} movie={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} willWatchList={this.state.willWatchList} />
                   </div>
                 )})}
             </div>
           </div>
           <div className="col-3 " >
             <div className="App-Sticky">
-             <WillWatchList watchList={this.state.watchList}/>
+             <WillWatchList watchList={this.state.willWatchList}/>
             </div>
           </div>
         </div>

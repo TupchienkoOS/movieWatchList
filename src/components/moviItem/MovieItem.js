@@ -11,12 +11,11 @@ class MovieItem extends React.Component {
         super(props);
         this.state = ({
             like: false, showOverview: false,
-            addedToWatchList: this.props.watchList.some(item => item.id === this.props.key)
+            addedToWatchList: this.props.willWatchList.some(item => item.id === this.props.key)
         })
     }
 
     getImgSrc = () => {
-        debugger;
         return this.props.movie.poster_path == null ? 'https://ih0.redbubble.net/image.523773899.2261/flat,550x550,075,f.u4.jpg' : `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`
     }
 
@@ -51,7 +50,10 @@ class MovieItem extends React.Component {
                     <h2 style={{ padding: "10px", fontSize: "95%" }}>{title}</h2>
                 </div>
                 <div className="d-inline-block float-right m-2">
-                    <Button onClick={this.addInTheWhatchList} icon={{ name: this.state.addedToWatchList ? "checkmark" : "add", color: this.state.addedToWatchList ? "green" : null, title: "add to watch list" }} />
+                    <Button onClick={this.addInTheWhatchList}
+                        icon={{ name: this.state.addedToWatchList ? "checkmark" : "add",
+                        color: this.state.addedToWatchList ? "green" : null,
+                        title: "add to watch list" }} />
                 </div>
                 <div className="pt-1">
                     <h5 align="center"  >IMDB: {vote_average}</h5>
