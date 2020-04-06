@@ -14,16 +14,17 @@ class Movie extends React.Component {
     console.log('ctor App')
     super();
     this.state = ({
-      show: false, like: false, moviesData: [],
+      show: false, like: false, moviesData: [],moviesDataFiltered: [],
       willWatchList: [], sortMovies: "popularity.desc",
       isFetched: true, currentPage: 1, totalPages: 0
     })
   }
 
-  searchHandle = title =>{
-    return (event) => {
-      console.log(event)
-    }
+  onSearchHandle=(movieId)=> {    
+    debugger;       
+    const test = this.state.moviesData.filter(function (movie) {return movie.id === movieId});
+      this.setState({ moviesDataFiltered: this.state.moviesData.filter(function (movie) {return movie.id === movieId})} )
+    
   }
 
   deleteHandle = movie => {
@@ -58,6 +59,7 @@ class Movie extends React.Component {
       this.fetchData();
       console.log('didUpdate App')
     }
+    
   }
 
   onChangeSortHandler = value => {
@@ -73,7 +75,7 @@ class Movie extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-3 mt-2">
-            <SearchComponent  searchHandle={this.searchHandle}/>
+            <SearchComponent moviesdata={this.state.moviesData} onSearchHandle={this.onSearchHandle} />
           </div>
           <div className="col-3 mt-2">
             <DropdownSortBtn onChangeSortHandler={this.onChangeSortHandler} isFetched={this.state.isFetched} />
@@ -85,17 +87,18 @@ class Movie extends React.Component {
         <div className="row">
           <div className="col-9">
             <div className="row">
-              {this.state.moviesData.map((movie) => {
+              {(this.state.moviesDataFiltered.length===0 ? this.state.moviesData:this.state.moviesDataFiltered ).map((movie) => {
                 return (
                   <div className="col-4 mb-2 mt-2" key={movie.id}>
                     <MovieItem key={movie.id} movie={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} willWatchList={this.state.willWatchList} />
                   </div>
-                )})}
+                )
+              })}
             </div>
           </div>
           <div className="col-3 " >
             <div className="App-Sticky">
-             <WillWatchList watchList={this.state.willWatchList}/>
+              <WillWatchList watchList={this.state.willWatchList} />
             </div>
           </div>
         </div>
@@ -103,7 +106,7 @@ class Movie extends React.Component {
           <div className="col-6 m-2 " >
             <PaginationTabs currentPage={this.state.currentPage} totalPages={this.state.totalPages} onChangeCurrentPage={this.onChangeCurrentPage} />
           </div>
-        </div>        
+        </div>
       </div>
     )
   }
