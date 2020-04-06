@@ -14,22 +14,19 @@ class Movie extends React.Component {
     console.log('ctor App')
     super();
     this.state = ({
-      show: false, like: false, moviesData: [],moviesDataFiltered: [],
+      show: false, like: false, moviesData: [], moviesDataFiltered: [],
       willWatchList: [], sortMovies: "popularity.desc",
       isFetched: true, currentPage: 1, totalPages: 0
     })
   }
 
-  onSearchHandle=(movieId)=> {    
-    debugger;       
-    const test = this.state.moviesData.filter(function (movie) {return movie.id === movieId});
-      this.setState({ moviesDataFiltered: this.state.moviesData.filter(function (movie) {return movie.id === movieId})} )
-    
+  onSearchHandle = movieId => {
+    this.setState({ moviesDataFiltered: this.state.moviesData.filter(movie => movie.id === movieId) })
   }
 
   deleteHandle = movie => {
-    return (event) => {
-      this.setState({ moviesData: this.state.moviesData.filter(function (item) { return item.id !== movie.id }) })
+    return () => {
+      this.setState({ moviesData: this.state.moviesData.filter(item => item.id !== movie.id) })
       this.deleteFromWatchList(movie)
     }
   }
@@ -59,7 +56,7 @@ class Movie extends React.Component {
       this.fetchData();
       console.log('didUpdate App')
     }
-    
+
   }
 
   onChangeSortHandler = value => {
@@ -87,7 +84,7 @@ class Movie extends React.Component {
         <div className="row">
           <div className="col-9">
             <div className="row">
-              {(this.state.moviesDataFiltered.length===0 ? this.state.moviesData:this.state.moviesDataFiltered ).map((movie) => {
+              {(this.state.moviesDataFiltered.length === 0 ? this.state.moviesData : this.state.moviesDataFiltered).map((movie) => {
                 return (
                   <div className="col-4 mb-2 mt-2" key={movie.id}>
                     <MovieItem key={movie.id} movie={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} willWatchList={this.state.willWatchList} />

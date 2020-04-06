@@ -13,7 +13,6 @@ export default class SearchComponent extends Component {
 
     componentDidUpdate(prevProps,prevState){
         if (this.state.value.length<1 && prevState !== this.state) {
-            debugger;
             this.props.onSearchHandle();
         }
     }
@@ -36,21 +35,18 @@ export default class SearchComponent extends Component {
     handleResultSelect = (e, { result }) => {
         this.setState({ value: result.title })
         this.props.onSearchHandle(result.id);
-
     }
 
     render() {
-
         const { isLoading, results, value } = this.state
         return (
             <div>
                 <Search
-                    loading={null}
+                    loading={isLoading}
                     onResultSelect={this.handleResultSelect}
                     onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
                     value={value}
                     results={results}
-                    {...this.props}
                 />
             </div>
         )

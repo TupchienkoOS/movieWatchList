@@ -43,7 +43,7 @@ class MovieItem extends React.Component {
     }
     render() {
         console.log('render MovItem')
-        const { movie: { title, vote_average, overview, poster_path } } = this.props;
+        const { movie: { title, vote_average, overview } } = this.props;
         return (
             <div className={"MovieItem"} >
                 <div className="d-inline-block w-75 " style={{ height: "60px" }}>
