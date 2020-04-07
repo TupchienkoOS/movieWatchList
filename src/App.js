@@ -20,6 +20,8 @@ class Movie extends React.Component {
     })
   }
 
+getMoviesArr = () => {return this.state.moviesDataFiltered.length === 0 ? this.state.moviesData : this.state.moviesDataFiltered}
+
   onSearchHandle = movieId => {
     this.setState({ moviesDataFiltered: this.state.moviesData.filter(movie => movie.id === movieId) })
   }
@@ -56,7 +58,6 @@ class Movie extends React.Component {
       this.fetchData();
       console.log('didUpdate App')
     }
-
   }
 
   onChangeSortHandler = value => {
@@ -84,7 +85,7 @@ class Movie extends React.Component {
         <div className="row">
           <div className="col-9">
             <div className="row">
-              {(this.state.moviesDataFiltered.length === 0 ? this.state.moviesData : this.state.moviesDataFiltered).map((movie) => {
+              {(this.getMoviesArr()).map((movie) => {
                 return (
                   <div className="col-4 mb-2 mt-2" key={movie.id}>
                     <MovieItem key={movie.id} movie={movie} deleteHandle={this.deleteHandle} addToWatchList={this.addToWatchList} deleteFromWatchList={this.deleteFromWatchList} willWatchList={this.state.willWatchList} />
